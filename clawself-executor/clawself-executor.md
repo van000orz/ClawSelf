@@ -16,6 +16,12 @@ metadata:
 - **内容层草稿**：第三层（clawself-content）按 persona + market_context 生成的贴文正文（含 Hashtags），或由调度器触发内容层生成后再发布。
 - **square-post API**：币安官方发帖接口，需配置 X-Square-OpenAPI-Key。
 
+## 重要说明：本 Skill 不会“自动配置 Cron/计划任务”
+
+- 本文档定义的是**执行规则与判定逻辑**（阈值、冷却、配额、多样性、熔断等）。
+- 要实现“全自动”，你仍需要一个**外部触发器**让执行层按周期运行（例如：Cron / Windows 任务计划 / OpenClaw 的 scheduler / 常驻进程 `setInterval` / 总控编排器）。
+- 外部触发器只负责“**定期跑一次执行层**”，至于“这次到底发不发”，由本 Skill 的规则决定。
+
 ---
 
 ## 1. 状态监测与触发条件
